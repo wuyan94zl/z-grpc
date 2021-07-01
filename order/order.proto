@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+package order;
+
+message InfoRequest {
+  string id = 1; // 订单id
+  string user_id = 2; // 用户id
+}
+message listRequest {
+  string user_id = 1; // 用户id
+}
+
+message OrderResponse {
+  string data = 1; // 订单列表或详细
+}
+service Order {
+  rpc getOrderList(listRequest) returns(OrderResponse);
+  rpc getOrderInfo(InfoRequest) returns(OrderResponse);
+}
